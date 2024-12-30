@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using HoshBesh;
+using HoshBesh.Classes;
 namespace HoshBesh
 {
     internal class Menu

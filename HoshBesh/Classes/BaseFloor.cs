@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HoshBesh;
+using HoshBesh.Classes;
+using System.Linq;
 
-namespace The_HoshBesh.Classes
+namespace HoshBesh.Classes
 {
     internal abstract class BaseFloor
     {
@@ -12,35 +13,48 @@ namespace The_HoshBesh.Classes
             while (CurrentNode != null)
             {
                 Console.Clear();
-                Console.WriteLine("\\n" + CurrentNode.Description);
+                Console.WriteLine("\n" + CurrentNode.Description);
 
                 if (CurrentNode.Options.Count > 0)
                 {
-                    foreach (var option in CurrentNode.Options)
+                    // Seçenekleri göster
+                    for (int i = 0; i < CurrentNode.Options.Count; i++)
                     {
-                        Console.WriteLine($" - {option.Key}");
+                        var optionKey = CurrentNode.Options.Keys.ElementAt(i);
+                        var optionDescription = CurrentNode.OptionsDescriptions?[i] ?? optionKey;
+                        Console.WriteLine($" {optionDescription}");
                     }
 
-                    Console.Write("\\nYour choice: ");
+                    Console.Write("\nYour choice: ");
                     string playerChoice = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
 
-                    if (CurrentNode.Options.ContainsKey(playerChoice))
+                    bool matched = false;
+
+                    // Seçeneklerin anahtar kelimelerini kontrol et
+                    foreach (var option in CurrentNode.Options)
                     {
-                        CurrentNode = CurrentNode.Options[playerChoice];
+                        // Eğer kullanıcının girdiği metin, seçenek anahtar kelimesini içeriyorsa, eşleşir
+                        if (playerChoice.Contains(option.Key.ToLower()))
+                        {
+                            CurrentNode = option.Value;
+                            matched = true;
+                            break; // Eşleşen seçeneği bulduğunda döngüyü kır
+                        }
                     }
-                    else
+
+                    if (!matched)
                     {
-                        Console.WriteLine("\\n>> Invalid choice. Try again.");
+                        Console.WriteLine("\n>> Invalid choice. Try again.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\\n>> No more options available. The game will now end.");
+                    Console.WriteLine("\n>> No more options available. The game will now end.");
                     CurrentNode = null;
                 }
             }
 
-            Console.WriteLine("\\n>> The story has ended. Thank you for playing!");
+            Console.WriteLine("\n>> The story has ended. Thank you for playing!");
         }
 
         protected abstract StoryNode BuildStory();

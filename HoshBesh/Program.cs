@@ -1,8 +1,7 @@
 ﻿using HoshBesh;
-using System;
-using The_HoshBesh.Classes;
+using HoshBesh.Classes;
 
-namespace The_HoshBesh
+namespace HoshBesh
 {
     internal class Program
     {
@@ -19,18 +18,18 @@ namespace The_HoshBesh
                 switch (playerInput)
                 {
                     case "start":
-                        Console.WriteLine("\\n>> The game is starting...\\n");
+                        Console.WriteLine("\n>> The game is starting...\n");
                         Floor1 floor1 = new Floor1();
                         floor1.Start();
                         break;
 
                     case "exit":
-                        Console.WriteLine("\\n>> Exiting the game. Goodbye!\\n");
+                        Console.WriteLine("\n>> Exiting the game. Goodbye!\n");
                         isGameRunning = false;
                         break;
 
                     default:
-                        Console.WriteLine("\\n>> Invalid option. Please try again.\\n");
+                        Console.WriteLine("\n>> Invalid option. Please try again.\n");
                         break;
                 }
             }

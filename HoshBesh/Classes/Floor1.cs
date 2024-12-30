@@ -1,93 +1,191 @@
-﻿using The_HoshBesh.Classes;
+﻿using HoshBesh;
+using HoshBesh.Classes;
 
-internal class Floor1 : BaseFloor
+namespace HoshBesh.Classes
 {
-    public Floor1()
+    internal class Floor1 : BaseFloor
     {
-        CurrentNode = BuildStory();
-    }
+        public Floor1()
+        {
+            CurrentNode = BuildStory();
+        }
 
-    protected override StoryNode BuildStory()
-    {
-        StoryNode start = new StoryNode("You are in a dungeon. What will you do?");
+        protected override StoryNode BuildStory()
+        {
+            StoryNode start = new StoryNode("You are in a dungeon. What will you do?")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Stay in the dungeon",
+                    "Try to escape"
+                }
+            };
+            StoryNode f1_stayInDungeon = new StoryNode("You were not brave enough and never tried to escape. You spent the rest of your life in the dungeon.")
+            { RequiresInput = false };
 
-        StoryNode stayInDungeon = new StoryNode("You weren't brave enough and never tried to escape. You spent the rest of your life in the dungeon.");
+            StoryNode f1_riddle1 = new StoryNode("You gathered your courage and decided to try to escape. After dinner was served, a baby dragon appeared." +
+                            "\nYou said that you accepted the challenge they presented. The baby dragon laughed." +
+                            "\n'Then you must solve my riddle first.'" +
+                            "\n'How many moves does it take to put a crocodile in the refrigerator?'")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "2 moves",
+                    "3 moves"
+                }
+            };
+            StoryNode f1_riddle1Correct = new StoryNode("The baby dragon grumbled." +
+             "\n'Correct. First move, you open the refrigerator door. Second move, you put the crocodile inside. Third move, you close the refrigerator door.'" +
+             "\nYou got out of cellar. Now you must decide where to go. You saw something at the end of the corridor.");
 
-        StoryNode riddle2 = new StoryNode("You gathered your courage and decided to try to escape. After dinner was served, a baby dragon appeared.\nYou said that you accepted the challenge they presented.\nThe baby dragon laughed.'Then you must solve my riddle first.'\n'How many moves does it take to put a crocodile in the refrigerator?'");
-        StoryNode riddle2Correct = new StoryNode("The baby dragon grumbled.'Correct. First move, you open the refrigerator door. Second move, you put the crocodile inside. Third move, you close the refrigerator door.'\nYou got out of cellar. Now you must decide where to go. You saw something at the end of the corridor.");
+            StoryNode f1_riddle2 = new StoryNode("The baby dragon burst into laughter." +
+                            "\n'Wrong. First move, you open the refrigerator door. Second move, you put the crocodile inside. Third move, you close the refrigerator door.'" +
+                            "\n'I will give you one last chance. But if you get it wrong, I will lead you through the dark corridors and leave you in the depths of the dungeon where you can never escape.'" +
+                            "\n'Here is the riddle:'" +
+                            "\n'How many moves does it take to put an elephant in the refrigerator?'")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "4 moves",
+                    "3 moves"
+                }
+            };
+            StoryNode f1_riddle2Incorrect = new StoryNode("'You fell into my trap and forgot the crocodile. Now I will take you to the depths of the dungeon.'" +
+            "The baby dragon grabbed your arm and started running. When you came an area shrouded in darkness, it leave you there and ran off. " +
+            "Even though you can not see, you may escape if you retrace your steps.");
 
-        StoryNode riddle3 = new StoryNode("The baby dragon burst into laughter.'Wrong. First move, you open the refrigerator door. Second move, you put the crocodile inside. Third move, you close the refrigerator door.'\n'I will give you one last chance. But if you get it wrong, I will lead you through the dark corridors and leave you in the depths of the dungeon where you can never escape.'\n'Here is the riddle:'\n'How many moves does it take to put an elephant in the refrigerator?'");
-        StoryNode riddle3Incorrect = new StoryNode("'You fell into my trap and forgot the crocodile. Now I will take you to the depths of the dungeon.'\nThe baby dragon grabbed your arm and started running. When you came an area shrouded in darkness, it leave you there and ran off. Even though you can not see, you may escape if you retrace your steps.");
-        StoryNode riddle3Correct = new StoryNode("You didn’t forget the crocodile. I’ll let you out of the cellar. Let’s see if you can escape the dungeon.");
+            StoryNode f1_riddle2Correct = new StoryNode("You didn’t forget the crocodile. I’ll let you out of the cellar. Let’s see if you can escape the dungeon.");
 
-        StoryNode path = new StoryNode("Two trees appear in front of you: a palm tree on the right and a sycamore tree on the left.");
-        StoryNode rightPath = new StoryNode("You walked on the right path. There was someone at the of the way.");
-        StoryNode leftPath = new StoryNode("You lost in the dungeon and found yourself somewhere shrouded in darkness.");
+            StoryNode f1_path = new StoryNode("Two trees appear in front of you: a palm tree on the right and a sycamore tree on the left.")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Go right",
+                    "Go left"
+                }
+            };
 
-        StoryNode retracePath = new StoryNode("This was the path you took:\nFirst, go right, then up to stairs,and then in order: right,left,right and finally right again.\nYou need to retrace your steps. Which path will you take?");
-        StoryNode correctRetracePath = new StoryNode("You succesfully retrace your steps.");
-        StoryNode cryingSound = new StoryNode("You had to do the reverse of the path you took.You got even more lost. As you were wondering what to do, you suddenly heard someone crying, unsure of who it is.\nWill you follow the sound?");
+            StoryNode f1_rightPath = new StoryNode("You walked on the right path. There was someone at the of the way.");
 
-        StoryNode cocoDragon = new StoryNode("You saw the coconut dragon at the end of the way. The coconut dragon was crying. It wiped its tears when it saw you and greeted you.\n'Hello. I am Coco, the coconut dragon. It is brave of you to try to escape from the dungeon. Unfortunately, I am not as brave as you. I do not want to stop people from escaping, but I am too afraid to oppose the others.'\nYou realized the coconut dragon do not want to harm people. If you could encourage it, you might save both yourself and the dragon. You tried to recall a quote about courage from a great leader. If you can get it right, you might inspire the dragon. Which one was a great leader?");
-        StoryNode inspireDragon = new StoryNode("You turned to the coconut dragon and said, 'A brave man is not one who does not feel afraid, but one who conquers that fear, said Nelson Mandela. You can overcome your fear too.'\nYour words touched the dragon’s heart. Its eyes filled with hope, and it said 'You have given me courage. Here is the key, you can take it. May your courage serve you well against the other dragons. Do not forget me!'");
+            StoryNode f1_leftPath = new StoryNode("You lost in the dungeon and found yourself somewhere shrouded in darkness.");
 
-        StoryNode chickenRiddle = new StoryNode("You turned to the coconut dragon and said,'If you know something is right and do not stand up for it, you are a coward, said Confucius.'\nHearing this, the dragon began crying again.'I know I am a coward; that is why I can not leave. At least you can escape if you can answer my question.'\n'Which creature is known for its cowardice?'");
-        StoryNode correctAnswer = new StoryNode("'Correct! The chicken is known for its cowardice. Here is the key. Do not forget me!'");
-        StoryNode wrongAnswer = new StoryNode("The dragon keeps crying. 'It is natural to think that after seeing me. Here is the key, you can take it. Do  ot forget me!'");
 
-        StoryNode escapeFloor2 = new StoryNode("You have escaped to the next floor.");
-        StoryNode gameOver = new StoryNode("You heard someone crying but ignored the sound.\nDue to darkness you slowly lost your sense of direction and were unable to escape the depths of the dungeon. ");
+            StoryNode f1_retracePath = new StoryNode("This was the path you took:" +
+                "\nFirst, go right, then up to stairs, and then in order: right, left, right and finally right again." +
+                "\nYou need to retrace your steps. Which path will you take?")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Left-left-right-left-down the stairs-left",
+                    "Right-up to stairs-right-left-right-right"
+                }
+            };
 
-        start.Options.Add("stay in the dungeon", stayInDungeon);
-        start.Options.Add("try to escape", riddle2);
+            StoryNode f1_correctRetracePath = new StoryNode("You successfully retrace your steps.");
+            StoryNode f1_cryingSound = new StoryNode("You had to do the reverse of the path you took. You got even more lost. " +
+                           "\nAs you were wondering what to do, you suddenly heard someone crying, unsure of who it is." +
+                           "\nWill you follow the sound?")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Follow the sound",
+                    "Do not follow the sound"
+                }
+            };
+            StoryNode f1_cocoDragon = new StoryNode("You saw the coconut dragon at the end of the way. The coconut dragon was crying. It wiped its tears when it saw you and greeted you." +
+                           "\n'Hello. I am Coco, the coconut dragon. It is brave of you to try to escape from the dungeon. Unfortunately, I am not as brave as you. I do not want to stop people from escaping, but I am too afraid to oppose the others.'" +
+                           "\nYou realized the coconut dragon does not want to harm people. If you could encourage it, you might save both yourself and the dragon. " +
+                           "\nYou tried to recall a quote about courage from a great leader. If you can get it right, you might inspire the dragon. " +
+                           "\nWhich one was a great leader?")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Nelson Mandela",
+                    "Confucius"
+                }
+            };
+            StoryNode f1_inspireDragon = new StoryNode("You turned to the coconut dragon and said, " +
+                          "\n'A brave man is not one who does not feel afraid, but one who conquers that fear, said Nelson Mandela. You can overcome your fear too.'" +
+                          "\nYour words touched the dragon’s heart. Its eyes filled with hope, and it said " +
+                          "\n'You have given me courage. Here is the key, you can take it. May your courage serve you well against the other dragons. Do not forget me!'");
 
-        stayInDungeon.Options.Add("exit", null);
+            StoryNode f1_chickenRiddle = new StoryNode("You turned to the coconut dragon and said,'If you know something is right and do not stand up for it, you are a coward, said Confucius.'\nHearing this, the dragon began crying again.'I know I am a coward; that is why I cannot leave. At least you can escape if you can answer my question.'\n'Which creature is known for its cowardice?'")
+            {
+                RequiresInput = true,
+                OptionsDescriptions = new List<string>
+                {
+                    "Chicken",
+                    "Dragon"
+                }
+            };
+            StoryNode f1_correctAnswer = new StoryNode("'Correct! The chicken is known for its cowardice. Here is the key. Do not forget me!'"); ;
+            StoryNode f1_wrongAnswer = new StoryNode("The dragon keeps crying. " +
+                    "\n'It is natural to think that after seeing me. Here is the key, you can take it. Do not forget me!'");
 
-        riddle2.Options.Add("2 moves", riddle3);
-        riddle2.Options.Add("3 moves", riddle2Correct);
+            StoryNode f1_escapeFloor2 = new StoryNode("You have escaped to the next floor.");
 
-        riddle2Correct.Options.Add("have a look", path);
+            StoryNode f1_gameOver = new StoryNode("You heard someone crying but ignored the sound. " +
+                "\nDue to darkness you slowly lost your sense of direction and were unable to escape the depths of the dungeon.")
+            { RequiresInput = false };
 
-        path.Options.Add("go right", rightPath);
-        path.Options.Add("go left", leftPath);
+            start.Options.Add("stay", f1_stayInDungeon);
+            start.Options.Add("escape", f1_riddle1);
 
-        rightPath.Options.Add("keep going", cocoDragon);
-        leftPath.Options.Add("try to go back", retracePath);
+            f1_stayInDungeon.Options.Add("exit", null);
 
-        riddle3.Options.Add("4 moves", riddle3Correct);
-        riddle3.Options.Add("3 moves", riddle3Incorrect);
+            f1_riddle1.Options.Add("2", f1_riddle2);
+            f1_riddle1.Options.Add("3", f1_riddle1Correct);
 
-        riddle3Correct.Options.Add("have a look", path);
-        riddle3Incorrect.Options.Add("try to go back", retracePath);
+            f1_riddle1Correct.Options.Add("look", f1_path);
 
-        retracePath.Options.Add("left-left-right-left-down the stairs-left", correctRetracePath);
-        retracePath.Options.Add("right-up to stairs-right-left-right-right", cryingSound);
+            f1_path.Options.Add("right", f1_rightPath);
+            f1_path.Options.Add("left", f1_leftPath);
 
-        correctRetracePath.Options.Add("keep going", cocoDragon);
+            f1_rightPath.Options.Add("keep going", f1_cocoDragon);
+            f1_leftPath.Options.Add("go back", f1_retracePath);
 
-        cryingSound.Options.Add("follow the sound", cocoDragon);
-        cryingSound.Options.Add("do not follow the sound", gameOver);
+            f1_riddle2.Options.Add("4", f1_riddle2Correct);
+            f1_riddle2.Options.Add("3", f1_riddle2Incorrect);
 
-        gameOver.Options.Add("exit", null);
+            f1_riddle2Correct.Options.Add("look", f1_path);
+            f1_riddle2Incorrect.Options.Add("go back", f1_retracePath);
 
-        cocoDragon.Options.Add("nelson mandela", inspireDragon);
-        cocoDragon.Options.Add("confucius", chickenRiddle);
+            f1_retracePath.Options.Add("down", f1_correctRetracePath);
+            f1_retracePath.Options.Add("up", f1_cryingSound);
 
-        inspireDragon.Options.Add("take the key", escapeFloor2);
+            f1_correctRetracePath.Options.Add("keep going", f1_cocoDragon);
 
-        chickenRiddle.Options.Add("chicken", correctAnswer);
-        chickenRiddle.Options.Add("dragon", wrongAnswer);
+            f1_cryingSound.Options.Add("follow", f1_cocoDragon);
+            f1_cryingSound.Options.Add("do not follow", f1_gameOver);
 
-        correctAnswer.Options.Add("take the key", escapeFloor2);
-        wrongAnswer.Options.Add("take the key", escapeFloor2);
+            f1_gameOver.Options.Add("exit", null);
 
-        escapeFloor2.Options.Add("proceed", new Floor2().GetStartNode());
+            f1_cocoDragon.Options.Add("nelson mandela", f1_inspireDragon);
+            f1_cocoDragon.Options.Add("confucius", f1_chickenRiddle);
 
-        return start;
-    }
+            f1_inspireDragon.Options.Add("take the key", f1_escapeFloor2);
 
-    public StoryNode GetStartNode()
-    {
-        return CurrentNode;
+            f1_chickenRiddle.Options.Add("chicken", f1_correctAnswer);
+            f1_chickenRiddle.Options.Add("dragon", f1_wrongAnswer);
+
+            f1_correctAnswer.Options.Add("take the key", f1_escapeFloor2);
+            f1_wrongAnswer.Options.Add("take the key", f1_escapeFloor2);
+
+            f1_escapeFloor2.Options.Add("proceed", new Floor2().GetStartNode());
+
+            return start;
+        }
+
+        public StoryNode GetStartNode()
+        {
+            return CurrentNode;
+        }
     }
 }

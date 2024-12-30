@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
-
-namespace The_HoshBesh.Classes
+﻿using HoshBesh;
+using HoshBesh.Classes;
+namespace HoshBesh
 {
     internal class StoryNode
     {
         public string Description { get; set; }
         public Dictionary<string, StoryNode> Options { get; set; }
+        public bool RequiresInput { get; set; }
+        public List<string>? OptionsDescriptions { get; set; }
 
         public StoryNode(string description)
         {
             Description = description;
             Options = new Dictionary<string, StoryNode>();
+            RequiresInput = false;
+            OptionsDescriptions = null;
         }
     }
 }
