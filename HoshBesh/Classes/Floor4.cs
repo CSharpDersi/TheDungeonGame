@@ -204,8 +204,8 @@ namespace HoshBesh.Classes
 
             correctPun3.Options.Add("next", fourthQuestion);
 
-            fourthQuestion.Options.Add("vitamine", correctAnswer4);
-            fourthQuestion.Options.Add("vitaminc", wrongAnswer4);
+            fourthQuestion.Options.Add("vitamin e", correctAnswer4);
+            fourthQuestion.Options.Add("vitamin c", wrongAnswer4);
 
             correctAnswer4.Options.Add("finish", floor5);
             wrongAnswer4.Options.Add("retry", fourthPun);
