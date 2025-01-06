@@ -12,7 +12,19 @@ namespace HoshBesh.Classes
 
         protected override StoryNode BuildStory()
         {
-            StoryNode start = new StoryNode("You are in a dungeon. What will you do?")
+            StoryNode start = new StoryNode("Dragon eggs found years ago were revived by scientists. However, some mistakes that occurred during the experiments caused mutations in the dragons." +
+                "\nThey could now think and talk like humans. They were also, for some unknown reason, addicted to HoshBesh biscuits." +
+                "\nThese addictions were not a big problem for people at first. The number of them were little and they were still young. These reasons made them seem harmless." +
+                "\nAs the years went by, problems began to arise. The dragons grew and multiplied." +
+                "\nBecause of their addiction to HoshBesh, they started to prevent people from consuming it and said that only they could consume it." +
+                "\nOver time, they were not satisfied with this and also banned the consumption of the substances used in the production of HoshBesh." +
+                "\nIn this period when a new ban is added every day, a group of people decided to put an end to this situation. You joined these people and started a rebellion." +
+                "\nBut you were not successful. Many of you lost your lives, and the rest of you were thrown into a dungeon ruled by dragons addicted to five different tastes of HoshBesh." +
+                "\nAs the years passed, you started to think that you would never be able to get out of this dungeon again." +
+                "\nHowever, this year the dragons that ruled the dungeon were replaced by new dragons." +
+                "\nThese dragons gave you a chance to escape." +
+                "\nThey said'If you are confident, accept the challenge and try to escape. But if you fail, that will be the end of you.'." +
+                "\nWhat will you do?\n")
             {
                 RequiresInput = true,
                 OptionsDescriptions = new List<string>
