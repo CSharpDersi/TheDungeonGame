@@ -44,7 +44,9 @@ namespace HoshBesh.Classes
 
                     if (!matched)
                     {
-                        Console.WriteLine("\n>> Invalid choice. Try again.");
+                        if (playerChoice.Contains("exit")){ CurrentNode = null; }
+                        else { Console.WriteLine("\n>> Invalid choice. Try again."); };
+                       
                     }
                 }
                 else
