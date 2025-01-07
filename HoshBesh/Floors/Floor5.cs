@@ -1,4 +1,6 @@
-﻿namespace HoshBesh.Classes 
+﻿using HoshBesh;
+using HoshBesh.Classes;
+namespace HoshBesh.Classes 
 {
     internal class Floor5 : BaseFloor
     {
