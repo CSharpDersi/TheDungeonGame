@@ -1,6 +1,5 @@
 ﻿using HoshBesh;
 using HoshBesh.Classes;
-using System.Linq;
 
 namespace HoshBesh.Classes
 {
@@ -17,7 +16,7 @@ namespace HoshBesh.Classes
 
                 if (CurrentNode.Options.Count > 0)
                 {
-                    // Seçenekleri göster
+                    // Show options
                     for (int i = 0; i < CurrentNode.Options.Count; i++)
                     {
                         var optionKey = CurrentNode.Options.Keys.ElementAt(i);
@@ -30,15 +29,15 @@ namespace HoshBesh.Classes
 
                     bool matched = false;
 
-                    // Seçeneklerin anahtar kelimelerini kontrol et
+                    // Check keywords of options
                     foreach (var option in CurrentNode.Options)
                     {
-                        // Eğer kullanıcının girdiği metin, seçenek anahtar kelimesini içeriyorsa, eşleşir
+                        // If the text entered by the user contains the option keyword, it matches
                         if (playerChoice.Contains(option.Key.ToLower()))
                         {
                             CurrentNode = option.Value;
                             matched = true;
-                            break; // Eşleşen seçeneği bulduğunda döngüyü kır
+                            break; //Break the loop when you find the matching option
                         }
                     }
 

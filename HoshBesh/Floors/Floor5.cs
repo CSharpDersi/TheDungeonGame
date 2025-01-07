@@ -1,15 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Reflection.PortableExecutable;
-using System.Threading;
-using System;
-using HoshBesh;
-using HoshBesh.Classes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace HoshBesh.Classes 
+﻿namespace HoshBesh.Classes 
 {
     internal class Floor5 : BaseFloor
     {
