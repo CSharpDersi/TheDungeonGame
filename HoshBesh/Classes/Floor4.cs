@@ -70,7 +70,7 @@ namespace HoshBesh.Classes
             };
 
             StoryNode correctAnswer3 = new StoryNode(
-                "The dragon nods. 'Ah, coffee and hazelnuts—a classic pair! Let’s proceed.'"
+                "The dragon nods. 'Ah, coffee and hazelnuts—a classic pair! Let’s move on.'"
             );
 
             StoryNode wrongAnswer3 = new StoryNode(
@@ -124,7 +124,7 @@ namespace HoshBesh.Classes
                 RequiresInput = true,
                 OptionsDescriptions = new List<string>
                 {
-                    "A) Funny nut",
+                    "A) Cracked nut",
                     "B) Nutty professor"
                 }
             };
@@ -168,7 +168,7 @@ namespace HoshBesh.Classes
             StoryNode floor5 = new StoryNode("You have escaped to the next floor.");
 
 
-            floor4.Options.Add("proceed", firstQuestion);
+            floor4.Options.Add("play", firstQuestion);
 
             firstQuestion.Options.Add("italy", wrongAnswer1);
             firstQuestion.Options.Add("turkey", correctAnswer1);
@@ -188,15 +188,15 @@ namespace HoshBesh.Classes
             correctAnswer2.Options.Add("advance", thirdQuestion);
             wrongAnswer2.Options.Add("retry", secondPun);
 
-            secondPun.Options.Add("funny", wrongPun1);
-            secondPun.Options.Add("professor", correctPun2);
+            secondPun.Options.Add("professor", wrongPun1);
+            secondPun.Options.Add("cracked", correctPun2);
 
             correctPun2.Options.Add("continue", thirdQuestion);
 
             thirdQuestion.Options.Add("coffee", correctAnswer3);
             thirdQuestion.Options.Add("tea", wrongAnswer3);
 
-            correctAnswer3.Options.Add("proceed", fourthQuestion);
+            correctAnswer3.Options.Add("move", fourthQuestion);
             wrongAnswer3.Options.Add("retry", thirdPun);
 
             thirdPun.Options.Add("crack", correctPun3);
