@@ -176,9 +176,9 @@ namespace HoshBesh.Classes
             correctAnswer1.Options.Add("continue", secondQuestion);
             wrongAnswer1.Options.Add("try", firstPun);
 
-            firstPun.Options.Add("peanut", wrongPun1);
-            firstPun.Options.Add("learn", correctPun1);
-
+            firstPun.Options.Add("peanut", correctPun1);
+            firstPun.Options.Add("learn", wrongPun1);
+        
             correctPun1.Options.Add("next", secondQuestion);
             wrongPun1.Options.Add("retry", firstQuestion);
 
@@ -188,9 +188,9 @@ namespace HoshBesh.Classes
             correctAnswer2.Options.Add("advance", thirdQuestion);
             wrongAnswer2.Options.Add("retry", secondPun);
 
-            secondPun.Options.Add("professor", wrongPun1);
             secondPun.Options.Add("cracked", correctPun2);
-
+            secondPun.Options.Add("professor", wrongPun1);
+            
             correctPun2.Options.Add("continue", thirdQuestion);
 
             thirdQuestion.Options.Add("coffee", correctAnswer3);
