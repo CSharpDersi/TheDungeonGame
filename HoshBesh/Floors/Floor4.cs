@@ -224,7 +224,7 @@ namespace HoshBesh.Classes
 
         public StoryNode GetStartNode()
         {
-            return CurrentNode;
+            return CurrentNode!;
         }
     }
 }
