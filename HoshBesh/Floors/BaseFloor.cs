@@ -5,8 +5,8 @@ namespace HoshBesh.Classes
 {
     internal abstract class BaseFloor
     {
-        protected StoryNode CurrentNode;
-
+        protected StoryNode? CurrentNode;
+        
         public void Start()
         {
             while (CurrentNode != null)
@@ -50,7 +50,7 @@ namespace HoshBesh.Classes
                 }
                 else
                 {
-                    Console.WriteLine("\n>> No more options available. The game will now end.");
+                    Console.WriteLine("\n>> No more options available. ");
                     CurrentNode = null;
                 }
             }

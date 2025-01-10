@@ -147,10 +147,16 @@ namespace HoshBesh.Classes
                 "\nDue to darkness you slowly lost your sense of direction and were unable to escape the depths of the dungeon.")
             { RequiresInput = false };
 
+            StoryNode exitNode = new StoryNode("ENDED!")
+            {
+                RequiresInput = false
+            };
+
+
             start.Options.Add("stay", f1_stayInDungeon);
             start.Options.Add("escape", f1_riddle1);
 
-            f1_stayInDungeon.Options.Add("exit", null);
+            f1_stayInDungeon.Options.Add("exit", exitNode);
 
             f1_riddle1.Options.Add("2", f1_riddle2);
             f1_riddle1.Options.Add("3", f1_riddle1Correct);
@@ -177,7 +183,7 @@ namespace HoshBesh.Classes
             f1_cryingSound.Options.Add("follow", f1_cocoDragon);
             f1_cryingSound.Options.Add("do not follow", f1_gameOver);
 
-            f1_gameOver.Options.Add("exit", null);
+            f1_gameOver.Options.Add("exit", exitNode);
 
             f1_cocoDragon.Options.Add("nelson mandela", f1_inspireDragon);
             f1_cocoDragon.Options.Add("confucius", f1_chickenRiddle);
