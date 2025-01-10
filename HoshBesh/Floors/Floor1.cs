@@ -12,7 +12,19 @@ namespace HoshBesh.Classes
 
         protected override StoryNode BuildStory()
         {
-            StoryNode start = new StoryNode("You are in a dungeon. What will you do?")
+            StoryNode start = new StoryNode("Dragon eggs found years ago were revived by scientists. However, some mistakes that occurred during the experiments caused mutations in the dragons." +
+                "\nThey could now think and talk like humans. They were also, for some unknown reason, addicted to HoshBesh biscuits." +
+                "\nThese addictions were not a big problem for people at first. The number of them were little and they were still young. These reasons made them seem harmless." +
+                "\nAs the years went by, problems began to arise. The dragons grew and multiplied." +
+                "\nBecause of their addiction to HoshBesh, they started to prevent people from consuming it and said that only they could consume it." +
+                "\nOver time, they were not satisfied with this and also banned the consumption of the substances used in the production of HoshBesh." +
+                "\nIn this period when a new ban is added every day, a group of people decided to put an end to this situation. You joined these people and started a rebellion." +
+                "\nBut you were not successful. Many of you lost your lives, and the rest of you were thrown into a dungeon ruled by dragons addicted to five different tastes of HoshBesh." +
+                "\nAs the years passed, you started to think that you would never be able to get out of this dungeon again." +
+                "\nHowever, this year the dragons that ruled the dungeon were replaced by new dragons." +
+                "\nThese dragons gave you a chance to escape." +
+                "\nThey said'If you are confident, accept the challenge and try to escape. But if you fail, that will be the end of you.'." +
+                "\nWhat will you do?\n")
             {
                 RequiresInput = true,
                 OptionsDescriptions = new List<string>
@@ -135,10 +147,16 @@ namespace HoshBesh.Classes
                 "\nDue to darkness you slowly lost your sense of direction and were unable to escape the depths of the dungeon.")
             { RequiresInput = false };
 
+            StoryNode exitNode = new StoryNode("ENDED!")
+            {
+                RequiresInput = false
+            };
+
+
             start.Options.Add("stay", f1_stayInDungeon);
             start.Options.Add("escape", f1_riddle1);
 
-            f1_stayInDungeon.Options.Add("exit", null);
+            f1_stayInDungeon.Options.Add("exit", exitNode);
 
             f1_riddle1.Options.Add("2", f1_riddle2);
             f1_riddle1.Options.Add("3", f1_riddle1Correct);
@@ -165,7 +183,7 @@ namespace HoshBesh.Classes
             f1_cryingSound.Options.Add("follow", f1_cocoDragon);
             f1_cryingSound.Options.Add("do not follow", f1_gameOver);
 
-            f1_gameOver.Options.Add("exit", null);
+            f1_gameOver.Options.Add("exit", exitNode);
 
             f1_cocoDragon.Options.Add("nelson mandela", f1_inspireDragon);
             f1_cocoDragon.Options.Add("confucius", f1_chickenRiddle);
@@ -185,7 +203,7 @@ namespace HoshBesh.Classes
 
         public StoryNode GetStartNode()
         {
-            return CurrentNode;
+            return CurrentNode!;
         }
     }
 }
