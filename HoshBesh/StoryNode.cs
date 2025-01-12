@@ -1,5 +1,5 @@
 ﻿using HoshBesh;
-using HoshBesh.Classes;
+using HoshBesh.Floors;
 namespace HoshBesh
 {
     internal class StoryNode

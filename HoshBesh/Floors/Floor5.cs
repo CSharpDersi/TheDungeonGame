@@ -1,6 +1,7 @@
 ﻿using HoshBesh;
-using HoshBesh.Classes;
-namespace HoshBesh.Classes 
+using HoshBesh.Floors;
+
+namespace HoshBesh.Floors 
 {
     internal class Floor5 : BaseFloor
     {
